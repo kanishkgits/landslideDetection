@@ -1,0 +1,48 @@
+{
+  "rows": 500,
+  "event_pairs": 250,
+  "train_rows": 374,
+  "test_rows": 126,
+  "average_precision": 0.5692232075539713,
+  "roc_auc": 0.5762156714537667,
+  "classification_report": {
+    "0": {
+      "precision": 0.532258064516129,
+      "recall": 0.5238095238095238,
+      "f1-score": 0.528,
+      "support": 63.0
+    },
+    "1": {
+      "precision": 0.53125,
+      "recall": 0.5396825396825397,
+      "f1-score": 0.5354330708661418,
+      "support": 63.0
+    },
+    "accuracy": 0.5317460317460317,
+    "macro avg": {
+      "precision": 0.5317540322580645,
+      "recall": 0.5317460317460317,
+      "f1-score": 0.5317165354330708,
+      "support": 126.0
+    },
+    "weighted avg": {
+      "precision": 0.5317540322580645,
+      "recall": 0.5317460317460317,
+      "f1-score": 0.531716535433071,
+      "support": 126.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      33,
+      30
+    ],
+    [
+      29,
+      34
+    ]
+  ],
+  "validation": "PAIR_GROUPED_RANDOM_HOLDOUT; NOT A SPATIAL OR TEMPORAL INDEPENDENT VALIDATION",
+  "target": "NASA catalog reported event vs spatially displaced matched pseudo-absence",
+  "interpretation": "Model score is a relative event-discrimination score, NOT calibrated landslide probability."
+}
