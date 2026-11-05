@@ -5,7 +5,7 @@ import {
 import "leaflet/dist/leaflet.css";
 import "./style.css";
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API = "https://terraguard-api-z9rp.onrender.com";
 
 const CITIES = [
   { name: "Darjeeling", state: "West Bengal", lat: 27.0410, lon: 88.2663, tag: "Himalayan region" },
