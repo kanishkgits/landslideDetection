@@ -131,3 +131,32 @@ async def monitoring_socket(ws:WebSocket):
               "message":"Live assessments are requested per location; no simulated sensor feed is used."})
             await asyncio.sleep(15)
     except WebSocketDisconnect: return
+
+import httpx
+from fastapi import HTTPException
+
+@app.get("/debug/weather")
+async def debug_weather():
+    url = "https://api.open-meteo.com/v1/forecast"
+
+    params = {
+        "latitude": 27.041,
+        "longitude": 88.2663,
+        "hourly": "precipitation,soil_moisture_0_to_7cm,soil_moisture_7_to_28cm",
+        "past_days": 7,
+        "forecast_days": 1,
+        "timezone": "UTC",
+    }
+
+    try:
+        async with httpx.AsyncClient(timeout=30) as client:
+            response = await client.get(url, params=params)
+
+        return {
+            "open_meteo_status": response.status_code,
+            "success": response.is_success,
+            "response_preview": response.text[:500],
+        }
+
+    except httpx.RequestError as exc:
+        raise HTTPException(status_code=502, detail=str(exc))
